@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Shared Lists</string>
+    <string name="share_list_header">Share with</string>
+    <string name="login_screen">login</string>
+    <string name="my_lists_screen_title">My Lists</string>
+    <string name="list_items_screen_title">List Items</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="add_list">Add a List</string>
+    <string name="add_item">Add an Item</string>
+    <string name="change_username">Change username</string>
+
+</resources>
