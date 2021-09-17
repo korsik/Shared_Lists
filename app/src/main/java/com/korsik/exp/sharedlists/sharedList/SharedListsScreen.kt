@@ -41,11 +41,6 @@ fun SharedListsScreen(
     )
 }
 
-
-//fun DeleteAction(categoryId: String) {
-//    Log.i("HELLO_TESTING", "THIS IS THE DELETE ACTION!!! ON $categoryId")
-//}
-
 fun toggle(toggle: MutableState<Boolean>) {
     toggle.value = !toggle.value
 }
@@ -68,8 +63,6 @@ fun ListView(
                     onDelete = { viewModel.delete(categoryId = category.uid) },
                     onShare = {
                         toggle(toggle)
-                        // TO-DO
-                        // assign the selected list that will be shared with more users
                         viewModel.onShareSwipedSharedList.value = category
                     }
                 )
@@ -86,7 +79,6 @@ fun ListView(
         }
     }
     if (toggle.value) {
-//        CircularProgressBar()
         ShareListWithUsers(openDialog = toggle, sharedLists = viewModel)
     }
 }
@@ -104,55 +96,6 @@ fun CircularProgressBar() {
         CircularProgressIndicator(
             color = MaterialTheme.colors.primary
         )
-    }
-}
-
-@Composable
-private fun PoUps() {
-    Column(
-        modifier = Modifier
-//                .fillMaxWidth()
-            .padding(3.dp)
-            .shadow(elevation = 5.dp, shape = RectangleShape),
-        horizontalAlignment = Alignment.End
-    ) {
-        Row(
-            modifier = Modifier
-                .wrapContentWidth()
-                .clickable {
-
-                },
-            horizontalArrangement = Arrangement.End,
-        ) {
-            Text("Edit Account")
-            Spacer(modifier = Modifier.padding(horizontal = 3.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ic_edit),
-                tint = MaterialTheme.colors.secondary,
-                contentDescription = "edit account action",
-            )
-
-        }
-        Spacer(modifier = Modifier.padding(vertical = 3.dp))
-        Row(
-            modifier = Modifier
-                .wrapContentWidth()
-                .clickable {
-
-                },
-            horizontalArrangement = Arrangement.End
-        ) {
-            Text("Log out")
-            Spacer(modifier = Modifier.padding(horizontal = 3.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.ic_log_out),
-                tint = MaterialTheme.colors.secondary,
-                contentDescription = "logout action",
-            )
-
-        }
-//                }
-
     }
 }
 

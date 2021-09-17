@@ -51,8 +51,6 @@ class UserRepo {
             userProfiles.value = mutableListOf()
             val users = mutableListOf<User>()
             Firebase.database.reference.child("users").get().addOnSuccessListener {
-//                Log.i("firebase", "Got value ${it.value}")
-//                Log.i("firebase", "Got value ${FirebaseAuth.getInstance().currentUser!!.uid}")
                 it.children.forEach { dataSnapshot ->
                     val user = dataSnapshot.getValue(UserDto().javaClass)
 //                    Log.i("firebase", "Got value ${user}")

@@ -31,7 +31,6 @@ fun ScafoldWrapper(
 ) {
     Scaffold(
         backgroundColor = Color.White,
-//        drawerContent = { Text(text = " My Lists") },
         topBar = {
             TopBar(
                 title,
@@ -43,10 +42,8 @@ fun ScafoldWrapper(
         },
         floatingActionButtonPosition = FabPosition.End,
         floatingActionButton = {
-//            if (screenContent == "My Lists")
             FloatingActionButton(categories = categoriesViewModel, screenContent)
         }
-//        content = { screenContent }
     ) {
         if (screenContent == MainActivity.CONSTANTS.LIST_SCREEN) {
             SharedListsScreen(
@@ -82,8 +79,6 @@ fun TopBar(title: String, logOutClicked: () -> Unit, categories: ViewModel) {
             IconButton(
                 onClick = {
                     expanded.value = !expanded.value
-//                    FirebaseAuth.getInstance().signOut()
-//                    logOutClicked()
                 }
             ) {
                 Icon(
@@ -92,17 +87,6 @@ fun TopBar(title: String, logOutClicked: () -> Unit, categories: ViewModel) {
                     contentDescription = "delete action",
                 )
             }
-//            Box {
-//                // Back arrow here
-//                Row(modifier = Modifier.clickable{
-//                    expanded.value = !expanded.value
-//                }.padding(5.dp)) { // Anchor view
-//                    Icon(
-//                        painter = painterResource(id = R.drawable.ic_dots_three_vertical),
-//                        tint = Color.White,
-//                        contentDescription = "Open dropdown action",
-//                    )
-//                }
             DropdownMenu(
                 expanded = expanded.value,
                 onDismissRequest = { expanded.value = false }
@@ -122,8 +106,6 @@ fun TopBar(title: String, logOutClicked: () -> Unit, categories: ViewModel) {
                     Text("Edit Account")
                 }
                 DropdownMenuItem(onClick = {
-//                    FirebaseAuth.getInstance().signOut()
-//                    logOutClicked()
                     Log.i("ON DROPDOWN", "LOGOUT")
                 }) {
                     Icon(
@@ -140,9 +122,6 @@ fun TopBar(title: String, logOutClicked: () -> Unit, categories: ViewModel) {
                     Text("Send Feedback")
                 }
             }
-//            }
-
-
         }
     )
 
@@ -162,8 +141,6 @@ fun FloatingActionButton(categories: ViewModel, screenContent: String) {
     val openDialog = remember { mutableStateOf(false) }
     FloatingActionButton(onClick = {
         openDialog.value = true
-//        categories as CategoriesScreenViewModel
-//        categories.add()
     }) {
         Icon(
             Icons.Filled.Add,

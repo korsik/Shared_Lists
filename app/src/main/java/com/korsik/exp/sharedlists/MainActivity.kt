@@ -100,12 +100,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    SharedListsTheme {
-//        CategoriesScreen(viewModel = CategoriesScreenViewModel())
-//    }
-//}

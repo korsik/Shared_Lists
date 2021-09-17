@@ -33,18 +33,12 @@ fun ItemsList(
     listItemClicked: () -> Unit
 ) {
     val categories = viewModel.listItems.collectAsState()
-//    val revealedCategoryIds = viewModel.revealedCategoryIdsList.collectAsState()
-
     LazyColumn {
         items(items = categories.value, key = { cat -> cat.uid }) { category ->
-//            val unread = remember { mutableStateOf(false) }
             val dismissState = rememberDismissState(
                 confirmStateChange = {
-//                    if (it == DismissValue.DismissedToEnd) unread.value = !unread.value
                     if (it == DismissValue.DismissedToEnd) {
                         viewModel.updateItem(category)
-//                        Log.i("INTERACTIVE LIST ITEM ",  "THE INDEX ${categories.value.indexOf(category)}" +
-//                                "AND THE VALUES:  ${category}")
                         categories.value.filter { listItem ->
                             listItem.uid == category.uid
                         }[0].completed = !category.completed!!
@@ -122,7 +116,6 @@ fun DismissContent(
     listItemClicked: () -> Unit
 ) {
     if (dismissState.isDismissed(direction = DismissDirection.EndToStart)) {
-//        Log.i("THIS IS THE DELETION", "YOU MAKE IT YEAAAAAAAAAAH")
         viewModel.deleteItem(category.uid)
 
     }

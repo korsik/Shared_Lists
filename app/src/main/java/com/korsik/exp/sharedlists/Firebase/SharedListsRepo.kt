@@ -144,9 +144,6 @@ class SharedListsRepo {
         }
 
         private fun checkUsers(sharedlist: SharedList): Boolean {
-            Log.i("CURRENT USER", FirebaseAuth.getInstance().currentUser!!.uid)
-            Log.i("CREATOR USER", sharedlist.creator!!)
-            Log.i("SHARED USERS", sharedlist.sharedUsers.toString())
             if (FirebaseAuth.getInstance().currentUser!!.uid == sharedlist.creator) {
                 return true
             } else if (sharedlist.sharedUsers?.contains(FirebaseAuth.getInstance().currentUser!!.uid) == true) {

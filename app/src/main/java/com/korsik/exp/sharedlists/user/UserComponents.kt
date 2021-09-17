@@ -27,7 +27,6 @@ fun ShareListWithUsers(
     openDialog: MutableState<Boolean>,
     sharedLists: SharedListsScreenViewModel
 ) {
-//    val listName = remember { mutableStateOf(TextFieldValue()) }
     UserComponentsViewModel.retrieveUserProfiles(sharedLists.onShareSwipedSharedList)
     AlertDialog(
         onDismissRequest = {
@@ -77,7 +76,6 @@ fun ShareListWithUsers(
             Button(
                 onClick = {
                     openDialog.value = false
-//                    sharedLists.addList(listName.value.text)
                     UserComponentsViewModel.updateSharedUsers(
                         sharedLists.onShareSwipedSharedList.value
                     ) { sharedLists.getFirebaseListsData() }
@@ -90,7 +88,6 @@ fun ShareListWithUsers(
             Button(
                 onClick = {
                     openDialog.value = false
-//                    sharedLists.onShareSwipedSharedList.resetReplayCache()
                 },
                 colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary)
             ) {
@@ -141,7 +138,6 @@ fun CheckBoxComponent(
         onCheckedChange = {
             isChecked.value = it
             stateChange()
-//            Log.i("PEW LASEWR", "IN PEW CHECKBOX  ${formState.checkState}")
         },
         colors = CheckboxDefaults.colors(MaterialTheme.colors.primary)
     )

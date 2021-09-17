@@ -13,27 +13,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 object UserComponentsViewModel : ViewModel() {
-    //    val checkboxState = mutableStateOf(listOf<Boolean>())
     val nameList = mutableStateOf(listOf<User>())
     val searchBarText = mutableStateOf("")
 
     private val userProfiles = MutableStateFlow(listOf<User>())
 
     fun updateCheckboxState(newState: User) {
-//        Log.i("updateCheckboxState 1 ", "IN PEW CHECKBOX  ${newState.checkState}")
         newState.checkState = !newState.checkState
-//        Log.i("updateCheckboxState 2", "IN PEW CHECKBOX  ${newState.checkState}")
         userProfiles.value = userProfiles.value.toMutableStateList().also { list ->
             list.find { it.id == newState.id }?.checkState = newState.checkState
         }
-//        Log.i(
-//            "updateCheckboxState 3",
-//            "IN PEW CHECKBOX  ${userProfiles.value.find { it.id == newState.id }?.checkState}"
-//        )
-//        if(checkboxState.value.contains(newState)) return
-//        checkboxState.value = checkboxState.value.toMutableList().also { list ->
-//            list.add(newState)
-//        }
     }
 
     fun updateSearchBarText(newState: String) {
@@ -76,5 +65,3 @@ object UserComponentsViewModel : ViewModel() {
         }
     }
 }
-
-//data class UserCheckbox(val userId: UUID, val checkState: Boolean = false)

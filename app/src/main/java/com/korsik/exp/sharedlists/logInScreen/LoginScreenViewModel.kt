@@ -44,7 +44,6 @@ class LoginScreenViewModel : ViewModel() {
                 false
             )
         }
-//        _buttonType.emit(buttonType.value)
         Log.i("JUST GOT IN", "BUT NO UPDATES HAPPEN ${_buttonType.value.state}")
     }
 
@@ -65,8 +64,6 @@ class LoginScreenViewModel : ViewModel() {
         }
 
         if (_buttonType.value.state) {
-//            errorMessage.value = Connection.RegisterUser(email, password)
-//            Log.i("REPSONE REGISTER", errorMessage.value)
             viewModelScope.launch {
                 authenticateUser(
                     FirebaseAPI.registerUser(email, password),
@@ -80,8 +77,6 @@ class LoginScreenViewModel : ViewModel() {
                     navController = navController
                 )
             }
-//            Connection.LoginUserCoroutine(email, password)
-//            Connection.LoginUser("yolanda37@lula.com", "lula137")
         }
     }
 

@@ -33,13 +33,6 @@ class SharedListsScreenViewModel : ViewModel() {
     fun getFirebaseListsData() {
         viewModelScope.launch(Dispatchers.Default) {
             FirebaseAPI.SharedListsAPI.getLists(_sharedLists, _listItems, selectedSharedList)
-
-//            if(selectedSharedList != null) {
-//                updateListItems(selectedSharedList!!)
-////                Log.i("pew LASER", _listItems.value.toString())
-//            }
-//            Log.i("pew", _sharedLists.value.toString())
-
         }
     }
 
@@ -67,9 +60,6 @@ class SharedListsScreenViewModel : ViewModel() {
                     list.remove(categoryId)
                 }
             _sharedLists.value = _sharedLists.value.toMutableList().filter { it.uid != categoryId }
-//            for(category in _categories.value){
-//                Log.i("THE PUBLIC LIST ", category.toString())
-//            }
         }
     }
 
@@ -83,25 +73,17 @@ class SharedListsScreenViewModel : ViewModel() {
             )
             getFirebaseListsData()
         }
-//        for(list in  _categories.value){
-//            Log.i("THE LISTS", list.toString())
-//        }
     }
 
 
     fun addItem(title: String) {
         viewModelScope.launch {
-//            if (selectedSharedList.value != null) {
-                FirebaseAPI.ListItems.createListItem(
-                    selectedSharedList.value.uid,
-                    name = title,
-                )
-                getFirebaseListsData()
-//            }
+            FirebaseAPI.ListItems.createListItem(
+                selectedSharedList.value.uid,
+                name = title,
+            )
+            getFirebaseListsData()
         }
-//        for(list in  _categories.value){
-//            Log.i("THE LISTS", list.toString())
-//        }
     }
 
     fun deleteItem(key: String) {
@@ -112,11 +94,11 @@ class SharedListsScreenViewModel : ViewModel() {
 
     fun updateItem(listItem: ListItem) {
         viewModelScope.launch {
-                FirebaseAPI.ListItems.updateListItem(
-                    selectedSharedList.value,
-                    listItem.uid,
-                    ListItemDto(listItem.name, !listItem.completed!!)
-                )
+            FirebaseAPI.ListItems.updateListItem(
+                selectedSharedList.value,
+                listItem.uid,
+                ListItemDto(listItem.name, !listItem.completed!!)
+            )
         }
         getFirebaseListsData()
         Log.i("THE ITEM UPDATE", listItem.name.toString())
