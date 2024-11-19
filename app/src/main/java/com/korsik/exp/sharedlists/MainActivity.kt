@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.korsik.exp.sharedlists.R.string
 import com.korsik.exp.sharedlists.sharedList.SharedListsScreenViewModel
 import com.korsik.exp.sharedlists.logInScreen.LoginScreen
 import com.korsik.exp.sharedlists.logInScreen.LoginScreenViewModel
@@ -27,9 +28,9 @@ class MainActivity : ComponentActivity() {
     private val loginScreenViewModel by viewModels<LoginScreenViewModel>()
 
     object CONSTANTS {
-        const val LIST_SCREEN = R.string.my_lists_screen_title.toString()
-        const val ITEMS_SCREEN = R.string.list_items_screen_title.toString()
-        const val EDIT_PROFILE = R.string.edit_profile.toString()
+         val LIST_SCREEN = R.string.my_lists_screen_title.toString()
+         val ITEMS_SCREEN = R.string.list_items_screen_title.toString()
+         val EDIT_PROFILE = R.string.edit_profile.toString()
     }
 
     companion object {
